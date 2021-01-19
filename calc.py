@@ -15,11 +15,11 @@ def convert_to_list(expression):
 
     return spaced_string.split()
 
-# This function returns the next overarching argument in the list of tokens, and deletes them from the list
+# This function returns a list of tokens corresponding to the next overarching argument, and deletes them from the list
 def get_argument(expression_list):
-    # If we have a simple numeric argument, return the value
+    # If we have a simple numeric argument, return just the value in an array
     if(expression_list[0] != '('):
-        return expression_list[0], 1
+        return [expression_list[0]], 1
 
     # Check for a balanced set of parentheses which would be an argument
     index = 1
