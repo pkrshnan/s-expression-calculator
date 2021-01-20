@@ -2,19 +2,6 @@
 
 import sys
 
-# This function adds spaces after a '(' and before a ')' so that we can split on the spaces to get a list of "tokens"
-def convert_to_list(expression):
-    spaced_string = ""
-    for char in expression:
-        if(char == '('):
-            spaced_string += char + ' '
-        elif(char == ')'):
-            spaced_string += ' ' + char
-        else:
-            spaced_string += char
-
-    return spaced_string.split()
-
 # This function returns a list of tokens corresponding to the next overarching argument, and deletes them from the list
 def get_argument(expression_list):
     # If we have a simple numeric argument, return just the value in an array
@@ -66,6 +53,20 @@ def evaluate(expression_list):
     elif(formatted_expression[0] == 'multiply'):
         answer = evaluate(formatted_expression[1]) * evaluate(formatted_expression[2])
     return answer
+
+# This function adds spaces after a '(' and before a ')' so that we can split on the spaces to get a list of "tokens"
+# If we needed to check if an expression is balanced, we can do it here by just keeping a count like in get_argument
+def convert_to_list(expression):
+    spaced_string = ""
+    for char in expression:
+        if(char == '('):
+            spaced_string += char + ' '
+        elif(char == ')'):
+            spaced_string += ' ' + char
+        else:
+            spaced_string += char
+
+    return spaced_string.split()
 
 def main():
     # Check number of arguments and set to variable
